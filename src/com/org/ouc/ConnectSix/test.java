@@ -48,7 +48,25 @@ public class test {
             return d2;
 
         }
-        public ArrayList<dian> kuozhan1(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4)//扩展一个点
+    public ArrayList<dian> kuozhan2(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2)
+    {
+        ArrayList<dian> list1 =new  ArrayList<dian>();
+        dian d2=new dian(j,k);
+        d2.row=j;
+        d2.col=k;
+        d2.a3.x=p;
+        d2.a3.y=q;
+        d2.a1.x=zuobiao1.x;
+        d2.a1.y=zuobiao1.y;
+        d2.a2.x=zuobiao2.x;
+        d2.a2.y=zuobiao2.y;
+        int b,c;
+        for(b=0;b<d2.row;b++)
+            for(c=0;c<d2.col;c++)
+                d2.shu[b][c]=a[b][c];
+        return list1;
+    }
+        public ArrayList<dian> kuozhan1(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2)//扩展一个点
         {
             ArrayList<dian> list1 =new  ArrayList<dian>();
             dian d2=new dian(j+a1+a3,k+a2+a4);//扩展
@@ -56,7 +74,8 @@ public class test {
             d2.col=k+a2+a4;//col
             d2.a3.x=p-a1;//扩展之后首元素的横坐标
             d2.a3.y=q-a2;//纵坐标
-
+            d2.a2.x=zuobiao1.x;
+            d2.a2.y=zuobiao1.y;
             int b,c;
             for(b=0;b<d2.row;b++)
                 for(c=0;c<d2.col;c++)
@@ -81,7 +100,7 @@ public class test {
             return list1;
 
         }
-        public ArrayList<dian> kuozhan2(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4)//扩展两个点
+        public ArrayList<dian> kuozhan0(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2)//扩展两个点
         {
             ArrayList<dian> list1 =new  ArrayList<dian>();
             dian d2=new dian(j+a1+a3,k+a2+a4);//扩展
@@ -125,7 +144,7 @@ public class test {
         }//同上
 
 
-        public ArrayList<dian> shuzu(int i,int [][]a,int p,int q,int j,int k)
+        public ArrayList<dian> shuzu(int i,int [][]a,int p,int q,int j,int k,zuobiao zuobiao1,zuobiao zuobiao2)
         //i 表示数字1，2.j，k表示数组的长和宽，p，q表示数组的首个元素在矩形的位置
 
 
@@ -135,7 +154,7 @@ public class test {
             int e,f,g,h;
 
 
-            if(i==2)//传过来两个值
+            if(i==0)//传过来两个值
             {
                 if(p==0) e=0;//上
                 else if(p==1)e=1;
@@ -149,7 +168,7 @@ public class test {
                 if(q+k==border) h=0;//右
                 else if(q+k==(border-1))h=1;
                 else h=2;
-                list=kuozhan2(a,p,q,j,k,e,f,g,h);
+                list=kuozhan0(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2);
             }
             if(i==1)//同上
             {
@@ -165,9 +184,12 @@ public class test {
                 if(q+k==border) h=0;
                 else h=1;
 
-                list=kuozhan1(a,p,q,j,k,e,f,g,h);
+                list=kuozhan1(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2);
             }
+            else list=kuozhan2(a,p,q,j,k,0,0,0,0,zuobiao1,zuobiao2);
             return list;
+
+
         }
 
 
