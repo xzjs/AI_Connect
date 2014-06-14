@@ -1,4 +1,4 @@
-package com.org.ouc.mainFrame;
+package com.org.ouc.ConnectSix;
 
 /**
  * Created by xinbo on 2014/5/28.
