@@ -30,7 +30,7 @@ public class RandomPlayer extends ConnectSixPlayer{
 		Move last = getLastMove();
 		Move oppoentLastMove = getOpponentLastMove();
 		
-		while(true){
+		/*while(true){
 			// 随机选择一个位置，看该位置上是否有该棋手的棋子
 			pos1.x = random.nextInt(now.length);
 			pos1.y = random.nextInt(now[0].length);
@@ -47,7 +47,16 @@ public class RandomPlayer extends ConnectSixPlayer{
 				newSteps = new Move( pos1, pos2 );
 				return newSteps;
 			}
-		}
+		}*/
+        Cut_chess cc=new Cut_chess(s);
+        int[][] newchess =cc.cut();
+        test t=new test();
+        Fpiece fp1=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
+        Fpiece fp2=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
+        Solution so=new Solution();
+        so.selece(fp1);
+        so.selece(fp2);
+        so.fmain();
 	}
 
 }

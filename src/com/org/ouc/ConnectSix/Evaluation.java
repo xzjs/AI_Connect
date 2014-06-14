@@ -128,7 +128,7 @@ public class Evaluation //求评估值
 
     public int SingleDirectionValue(int[] arr)
     {
-        int value;
+        int value=0;
         ///////提取重要数据
         int leftRange,rightRange,leftEdge,rightEdge,leftSpace,rightSpace,space;
         leftEdge = stepIndex;
