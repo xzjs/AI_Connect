@@ -1,6 +1,7 @@
 package com.org.ouc.ConnectSix;
 
 
+import java.util.ArrayList;
 
 /**
  * Created by ganyiming on 2014/6/14.
@@ -169,7 +170,7 @@ public class test {
                 if(q+k==border) h=0;//ср
                 else if(q+k==(border-1))h=1;
                 else h=2;
-                list=kuozhan0(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2);
+                list=kuozhan0(a, p, q, j, k, e, f, g, h, zuobiao1, zuobiao2);
             }
             if(i==1)//м╛ио
             {
