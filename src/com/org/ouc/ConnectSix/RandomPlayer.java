@@ -1,6 +1,7 @@
 package com.org.ouc.ConnectSix;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.org.ouc.platform.Move;
@@ -26,6 +27,7 @@ public class RandomPlayer extends ConnectSixPlayer{
 		
 		System.out.println( "Mine: " + this.PIECE_ID + " Opponet: " + getOpponentPieceID() );
 		int[][] s = now;
+        s[10][10]=1;
 		Move newSteps = null;
 		Move last = getLastMove();
 		Move oppoentLastMove = getOpponentLastMove();
@@ -48,15 +50,32 @@ public class RandomPlayer extends ConnectSixPlayer{
 				return newSteps;
 			}
 		}*/
+        //小样
         Cut_chess cc=new Cut_chess(s);
         int[][] newchess =cc.cut();
-        test t=new test();
         Fpiece fp1=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
         Fpiece fp2=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
         Solution so=new Solution();
         so.selece(fp1);
         so.selece(fp2);
         so.fmain();
+
+        //小鸣
+        test t=new test();
+        zuobiao z1=new zuobiao(so.get_piece1.x,so.get_piece1.y);
+        zuobiao z2=new zuobiao(so.get_piece2.x,so.get_piece2.y);
+        ArrayList<dian> ad=t.shuzu(so.count_num,newchess,cc.k1,cc.k2,cc.lengh1,cc.lengh2,z1,z2);
+
+        //小高
+        Evaluation ev=new Evaluation();
+        dian d=ev.GetNextStep(ad);
+
+        pos1.x=d.a1.x;
+        pos1.y=d.a1.y;
+        pos2.x=d.a2.x;
+        pos2.y=d.a2.y;
+        newSteps=new Move(pos1,pos2);
+        return newSteps;
 	}
 
 }

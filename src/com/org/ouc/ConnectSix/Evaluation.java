@@ -399,15 +399,26 @@ public class Evaluation //求评估值
     }
 
 
-    //生成  众多子节点的评估值 所形成的ArrayList
-    public ArrayList<Integer> ValueList(ArrayList<dian> list)
+    //求下一步落子后所形成的局面
+    // 生成由  众多子节点的评估值 所形成的ArrayList； 然后将最大评估值的dian找出并返回
+    public dian GetNextStep (ArrayList<dian> list)
     {
         ArrayList<Integer> valueList = new ArrayList<Integer>();
         for(dian point : list)
         {
             valueList.add(CountTotalValue(point));
         }
-        return valueList;
+
+        int max = 0;
+        for(int ijk = 0; ijk < valueList.size() - 1; ijk++)
+        {
+            if(valueList.get(max) < valueList.get(ijk + 1))
+            {
+                max = ijk + 1;
+            }
+        }
+
+        return list.get(max);
     }
 
 }
