@@ -50,6 +50,7 @@ public class RandomPlayer extends ConnectSixPlayer{
 				return newSteps;
 			}
 		}*/
+        static Boolean()
         //ะกั๙
         Cut_chess cc=new Cut_chess(s);
         int[][] newchess =cc.cut();

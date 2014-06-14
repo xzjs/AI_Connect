@@ -8,8 +8,6 @@ public class begin {
     public int a[][];
     public int color;
     int center=border/2;
-    int i;
-   int j;
     public   start st(int a[][],int color)
     {
         start s=new start();
