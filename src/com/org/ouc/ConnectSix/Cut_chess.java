@@ -5,8 +5,8 @@ package com.org.ouc.ConnectSix;
  */
 public class Cut_chess {
     int k1, k2, h1, h2;//[k1][k2]为小明要的第一个坐标。
-    int lengh1;
-    int lengh2;
+    int lengh1;//行
+    int lengh2;//列
     public static int[][] chess;
     public Cut_chess(int rchess[][]){
         chess=rchess.clone();

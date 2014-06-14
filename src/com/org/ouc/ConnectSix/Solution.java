@@ -4,14 +4,17 @@ package com.org.ouc.ConnectSix;
  * Created by xzjs on 2014/6/14.
  */
 
+
 public class Solution {
-    Piece piece1;
-    Piece piece2;
+    Fpiece piece1;
+    Fpiece piece2;
+    Fpiece get_piece1;
+    Fpiece get_piece2;
     int[] X_Axis;
     int[] Y_Axis;
     int[] Z_1_Axis;
     int[] Z_2_Axis;
-    int num;//记录返回点的个数
+    int count_num=0;//记录返回点的个数
     int [][] S_chess;
     int location1;
     int location2;//记录每个子数组处理后得到的点的位置；
@@ -19,7 +22,7 @@ public class Solution {
     int y_location=0;
     int Z_1_1ocation=0;
     int Z_2_location=0;
-    public int[] Get_X_Axis(Piece piece){//从横向搜索得到X轴方向的一个数组X_Axis[]；
+    public int[] Get_X_Axis(Fpiece piece){//从横向搜索得到X轴方向的一个数组X_Axis[]；
         int x=piece.x;
         int y=piece.y;
         int flag=piece.flag;
@@ -53,7 +56,8 @@ public class Solution {
         }
         return X_Axis;
     }
-    public int[] Get_Y_Axis (Piece piece) {//从纵向搜索得到Y轴方向的一个数组Y_Axis[]；
+
+    public int[] Get_Y_Axis (Fpiece piece) {//从纵向搜索得到Y轴方向的一个数组Y_Axis[]；
         int x=piece.x;
         int y=piece.y;
         int flag=piece.flag;
@@ -88,7 +92,7 @@ public class Solution {
         return Y_Axis;
     }
 
-    public int[] Get_Z_1_Axis(Piece piece){//从/方向搜索得到数组Z_1_Axis[]；
+    public int[] Get_Z_1_Axis(Fpiece piece){//从/方向搜索得到数组Z_1_Axis[]；
         int x=piece.x;
         int y=piece.y;
         int flag=piece.flag;
@@ -122,7 +126,8 @@ public class Solution {
         }
         return Z_1_Axis;
     }
-    public int[] Get_Z_2_Axis(Piece piece){//从\方向搜索得到数组Z_2_Axis[]；
+
+    public int[] Get_Z_2_Axis(Fpiece piece){//从\方向搜索得到数组Z_2_Axis[]；
         int x=piece.x;
         int y=piece.y;
         int flag=piece.flag;
@@ -156,9 +161,10 @@ public class Solution {
         }
         return Z_2_Axis;
     }
-    public void sulution(int [] Axis){
+
+    public int sulution(int [] Axis){
         int i=0;
-        int ReAxis[];
+        int ReAxis[] = null;
         int flg=1;//flg=0表示数组可以只下两子的情况下连成六子或多子
         while(flg==1&&i<Axis.length){//判断切割下来的数组能否在只下两子的情况下形成六连或多连
             if(Axis[i]==0){
@@ -228,22 +234,138 @@ public class Solution {
             if(x<num.length){//location1和2是分别记录堵的那2个点的坐标；如果x=num.length说明只用一个点就可以堵死了；
                 location1=num[x-1];
                 location2=num[x];
+                count_num=2;
             }
             else {
                 location1=num[x-1];
+                count_num=1;
             }
 
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
 
+    public int selece(Fpiece rpiece1){
+        Solution s=new Solution();
+        if(s.sulution(s.Get_X_Axis(rpiece1))==1)
+            return 1;
+        if(s.sulution(s.Get_Y_Axis(rpiece1))==1)
+            return 2;
+        if(s.sulution(s.Get_Z_1_Axis(rpiece1))==1)
+            return 3;
+        else
+            return 4;
+    }
+
+    public void fmain(){
+        switch(selece(piece1)){
+            case 1:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece1.x-x_location+location1,piece1.y,-piece1.flag);
+                    get_piece2=new Fpiece(piece1.x-x_location+location2,piece1.y,-piece1.flag);
+                    Cut_chess.chess[piece1.x-x_location+location1][piece1.y]=-piece1.flag;
+                    Cut_chess.chess[piece1.x-x_location+location2][piece1.y]=-piece1.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece1.x-x_location+location1,piece1.y,-piece1.flag);
+                    Cut_chess.chess[piece1.x-x_location+location1][piece1.y]=-piece1.flag;
+                }
+            }
+            case 2:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece1.x,piece1.y-y_location+location1,-piece1.flag);
+                    get_piece2=new Fpiece(piece1.x,piece1.y-y_location+location2,-piece1.flag);
+                    Cut_chess.chess[piece1.x][piece1.y-y_location+location1]=-piece1.flag;
+                    Cut_chess.chess[piece1.x][piece1.y-y_location+location2]=-piece1.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece1.x,piece1.y-y_location+location1,-piece1.flag);
+                    Cut_chess.chess[piece1.x][piece1.y-y_location+location1]=-piece1.flag;
+                }
+            }
+            case 3:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece1.x-Z_1_1ocation+location1,piece1.y-Z_1_1ocation+location1,-piece1.flag);
+                    get_piece2=new Fpiece(piece1.x-Z_1_1ocation+location2,piece1.y-Z_1_1ocation+location2,-piece1.flag);
+                    Cut_chess.chess[piece1.x-Z_1_1ocation+location1][piece1.y-Z_1_1ocation+location1]=-piece1.flag;
+                    Cut_chess.chess[piece1.x-Z_1_1ocation+location2][piece1.y-Z_1_1ocation+location2]=-piece1.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece1.x-Z_1_1ocation+location1,piece1.y-Z_1_1ocation+location1,-piece1.flag);
+                    Cut_chess.chess[piece1.x-Z_1_1ocation+location1][piece1.y-Z_1_1ocation+location1]=-piece1.flag;
+                }
+            }
+            case 4:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece1.x-Z_2_location+location1,piece1.y+Z_2_location-location1,-piece1.flag);
+                    get_piece2=new Fpiece(piece1.x-Z_2_location+location2,piece1.y+Z_2_location-location2,-piece1.flag);
+                    Cut_chess.chess[piece1.x-Z_2_location+location1][piece1.y+Z_2_location-location1]=-piece1.flag;
+                    Cut_chess.chess[piece1.x-Z_2_location+location2][piece1.y+Z_2_location-location2]=-piece1.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece1.x-Z_2_location+location1,piece1.y+Z_2_location-location1,-piece1.flag);
+                    Cut_chess.chess[piece1.x-Z_2_location+location1][piece1.y+Z_2_location-location1]=-piece1.flag;
+                }
+            }
         }
 
+        switch(selece(piece2)){
+            case 1:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece2.x-x_location+location1,piece2.y,-piece2.flag);
+                    get_piece2=new Fpiece(piece2.x-x_location+location2,piece2.y,-piece2.flag);
+                    Cut_chess.chess[piece2.x-x_location+location1][piece2.y]=-piece2.flag;
+                    Cut_chess.chess[piece2.x-x_location+location2][piece2.y]=-piece2.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece2.x-x_location+location1,piece2.y,-piece2.flag);
+                    Cut_chess.chess[piece2.x-x_location+location1][piece2.y]=-piece2.flag;
+                }
+            }
+            case 2:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece2.x,piece2.y-y_location+location2,-piece2.flag);
+                    get_piece2=new Fpiece(piece2.x,piece2.y-y_location+location2,-piece2.flag);
+                    Cut_chess.chess[piece2.x][piece2.y-y_location+location1]=-piece2.flag;
+                    Cut_chess.chess[piece2.x][piece2.y-y_location+location2]=-piece2.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece2.x,piece2.y-y_location+location1,-piece2.flag);
+                    Cut_chess.chess[piece2.x][piece2.y-y_location+location1]=-piece2.flag;
+                }
+            }
+            case 3:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece2.x-Z_1_1ocation+location1,piece2.y-Z_1_1ocation+location1,-piece2.flag);
+                    get_piece2=new Fpiece(piece2.x-Z_1_1ocation+location2,piece2.y-Z_1_1ocation+location2,-piece2.flag);
+                    Cut_chess.chess[piece2.x-Z_1_1ocation+location1][piece2.y-Z_1_1ocation+location1]=-piece2.flag;
+                    Cut_chess.chess[piece2.x-Z_1_1ocation+location2][piece2.y-Z_1_1ocation+location2]=-piece2.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece2.x-Z_1_1ocation+location1,piece2.y-Z_1_1ocation+location1,-piece2.flag);
+                    Cut_chess.chess[piece2.x-Z_1_1ocation+location1][piece2.y-Z_1_1ocation+location1]=-piece2.flag;
+                }
+            }
+            case 4:{
+                if(count_num==2){
+                    get_piece1=new Fpiece(piece2.x-Z_2_location+location1,piece2.y+Z_2_location-location1,-piece2.flag);
+                    get_piece2=new Fpiece(piece2.x-Z_2_location+location2,piece2.y+Z_2_location-location2,-piece2.flag);
+                    Cut_chess.chess[piece2.x-Z_2_location+location1][piece2.y+Z_2_location-location1]=-piece2.flag;
+                    Cut_chess.chess[piece2.x-Z_2_location+location2][piece2.y+Z_2_location-location2]=-piece2.flag;
+                }
+                else {
+                    get_piece1=new Fpiece(piece2.x-Z_2_location+location1,piece2.y+Z_2_location-location1,-piece2.flag);
+                    Cut_chess.chess[piece2.x-Z_2_location+location1][piece2.y+Z_2_location-location1]=-piece2.flag;
+                }
+            }
+        }
+    }
+
+
+}
 
 
 
-
-
-
-
-
-
-
-    }   }

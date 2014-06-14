@@ -1,9 +1,10 @@
 package com.org.ouc.ConnectSix;
 
+import java.util.ArrayList;
+
 /**
  * Created by ganyiming on 2014/6/14.
  */
-import java.util.ArrayList;
 public class test {
 
 
