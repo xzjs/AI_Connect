@@ -15,10 +15,10 @@ public class begin {
         {
             s.zo1.x=center;
             s.zo1.y=center;
-            s.zo2.x=center+1;
-            s.zo2.y=center+1;
+            s.zo2.x=center;
+            s.zo2.y=center;
             a[center][center]=1;
-            s.a=this.a;
+
         }
         else
         {
@@ -32,7 +32,7 @@ public class begin {
                     s.zo1.y=center;
                     s.zo2.x=center;
                     s.zo2.y=center+1;
-                    s.a=this.a;
+
                 }
                 else
                 {
@@ -42,7 +42,7 @@ public class begin {
                     s.zo1.y=center+1;
                     s.zo2.x=center+2;
                     s.zo2.y=center;
-                    s.a=this.a;
+
                 }
             }
             else
@@ -53,7 +53,7 @@ public class begin {
                 s.zo1.y=center+2;
                 s.zo2.x=center+1;
                 s.zo2.y=center+1;
-                s.a=this.a;
+
 
             }
         }

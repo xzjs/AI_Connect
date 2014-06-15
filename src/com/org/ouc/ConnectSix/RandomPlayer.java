@@ -15,11 +15,11 @@ public class RandomPlayer extends ConnectSixPlayer{
 	private Point pos2 = new Point();
 	
 	/*
-	 * now´æ´¢ÆåÅÌ¸ñ¾ÖµÄ¶þÎ¬Êý×é£¬ ²»°üÀ¨±ß½ç
-	 * Èç¹ûnow[i][j] == this.PIECE_ID,ÕâÒ»Î»ÖÃÊÇ×Ô¼ºµÄ×Ó£»
-	 * Èç¹ûnow[i][j] == getOpponentPieceID(),ÕâÒ»Î»ÖÃÊÇ¶ÔÊÖµÄ×Ó£»
-	 * ·ñÔònow[i][j] ÕâÒ»Î»ÖÃÊÇ¿ÕµÄ¡£
-	 * ÔÚConnectSixPlayerÖÐÐÂÔöÁËÒ»¸ö·½·¨ Move getOpponentLastStep();»ñÈ¡¶ÔÊÖÉÏ´ÎµÄ×ß²½
+	 * nowï¿½æ´¢ï¿½ï¿½ï¿½Ì¸ï¿½ÖµÄ¶ï¿½Î¬ï¿½ï¿½ï¿½é£¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½
+	 * ï¿½ï¿½ï¿½now[i][j] == this.PIECE_ID,ï¿½ï¿½Ò»Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ó£ï¿½
+	 * ï¿½ï¿½ï¿½now[i][j] == getOpponentPieceID(),ï¿½ï¿½Ò»Î»ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½Öµï¿½ï¿½Ó£ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½now[i][j] ï¿½ï¿½Ò»Î»ï¿½ï¿½ï¿½Ç¿ÕµÄ¡ï¿½
+	 * ï¿½ï¿½ConnectSixPlayerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Move getOpponentLastStep();ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Îµï¿½ï¿½ß²ï¿½
 	 * 
 	 */
 	@Override
@@ -32,7 +32,7 @@ public class RandomPlayer extends ConnectSixPlayer{
 		Move oppoentLastMove = getOpponentLastMove();
 		
 		/*while(true){
-			// Ëæ»úÑ¡ÔñÒ»¸öÎ»ÖÃ£¬¿´¸ÃÎ»ÖÃÉÏÊÇ·ñÓÐ¸ÃÆåÊÖµÄÆå×Ó
+			// ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½
 			pos1.x = random.nextInt(now.length);
 			pos1.y = random.nextInt(now[0].length);
 			pos2.x = random.nextInt(now.length);
@@ -42,7 +42,7 @@ public class RandomPlayer extends ConnectSixPlayer{
 				newSteps = new Move( pos1, pos1 );
 				return newSteps;
 			}
-			// Èç¹ûÑ¡ÔñµÄÎ»ÖÃÉÏÎÞÆå×Ó
+			// ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if ( s[pos1.x][pos1.y] == 0 && s[pos2.x][pos2.y] == 0 && !pos1.equals(pos2) ){
 				
 				newSteps = new Move( pos1, pos2 );
@@ -71,7 +71,7 @@ public class RandomPlayer extends ConnectSixPlayer{
             newSteps=new Move(pos1,pos2);
             return  newSteps;
         }
-        //Ð¡Ñù
+        //Ð¡ï¿½ï¿½
         /*Cut_chess cc=new Cut_chess(s);
       /*  Cut_chess cc=new Cut_chess(s);
         int[][] newchess =cc.cut();
@@ -82,7 +82,7 @@ public class RandomPlayer extends ConnectSixPlayer{
         so.selece(fp2);
         so.fmain();*/
 
-        //Ð¡Ãù
+        //Ð¡ï¿½ï¿½
 
         test t=new test();
         /*zuobiao z1=new zuobiao(so.get_piece1.x,so.get_piece1.y);
@@ -91,12 +91,12 @@ public class RandomPlayer extends ConnectSixPlayer{
         zuobiao z1=new zuobiao(9,9);
         zuobiao z2=new zuobiao(10,10);
          int [][]a=new int[2][2];
-        a[0][0]=;
-        a[0][1]=0;
-        a[1][0]=0;
-        a[1][1]=-1;
-        ArrayList<dian> ad=t.shuzu(0,a,8,8,2,2,z1,z2,1);
-        //Ð¡¸ß
+        a[0][0]=-1;
+        a[0][1]=1;
+        a[1][0]=1;
+        a[1][1]=0;
+        ArrayList<dian> ad=t.shuzu(0,a,9,9,2,2,z1,z2,-1);
+        //Ð¡ï¿½ï¿½
         Evaluation ev=new Evaluation();
         dian d=ev.GetNextStep(ad);
 
