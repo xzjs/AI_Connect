@@ -14,7 +14,7 @@ public class test {
 
 
         int border=19;//边界
-        int color=1;//棋子颜色
+        int color;//棋子颜色
         public int [][]a;
         public int[][] fuzhi1(int p,int q,int j,int k,int [][]a,int[][]d2)//档传进来一个点的时候给棋盘初始化
         {//p,q首元素的横坐标，纵坐标，j,k数组的长宽，a[][]代表传过来的数组，d2[][]要扩展的数组
@@ -50,7 +50,7 @@ public class test {
             return d2;
 
         }
-    public ArrayList<dian> kuozhan2(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2)
+    public ArrayList<dian> kuozhan2(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)
     {
         ArrayList<dian> list1 =new  ArrayList<dian>();
         dian d2=new dian(j,k);
@@ -68,7 +68,7 @@ public class test {
                 d2.shu[b][c]=a[b][c];
         return list1;
     }
-        public ArrayList<dian> kuozhan1(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2)//扩展一个点
+        public ArrayList<dian> kuozhan1(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)//扩展一个点
         {
             ArrayList<dian> list1 =new  ArrayList<dian>();
             dian d2=new dian(j+a1+a3,k+a2+a4);//扩展
@@ -102,7 +102,7 @@ public class test {
             return list1;
 
         }
-        public ArrayList<dian> kuozhan0(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2)//扩展两个点
+        public ArrayList<dian> kuozhan0(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)//扩展两个点
         {
             ArrayList<dian> list1 =new  ArrayList<dian>();
             dian d2=new dian(j+a1+a3,k+a2+a4);//扩展
@@ -146,7 +146,7 @@ public class test {
         }//同上
 
 
-        public ArrayList<dian> shuzu(int i,int [][]a,int p,int q,int j,int k,zuobiao zuobiao1,zuobiao zuobiao2)
+        public ArrayList<dian> shuzu(int i,int [][]a,int p,int q,int j,int k,zuobiao zuobiao1,zuobiao zuobiao2,int color)
         //i 表示数字1，2.j，k表示数组的长和宽，p，q表示数组的首个元素在矩形的位置
 
 
@@ -170,7 +170,7 @@ public class test {
                 if(q+k==border) h=0;//右
                 else if(q+k==(border-1))h=1;
                 else h=2;
-                list=kuozhan0(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2);
+                list=kuozhan0(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2,color);
             }
             if(i==1)//同上
             {
@@ -186,9 +186,9 @@ public class test {
                 if(q+k==border) h=0;
                 else h=1;
 
-                list=kuozhan1(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2);
+                list=kuozhan1(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2,color);
             }
-            else list=kuozhan2(a,p,q,j,k,0,0,0,0,zuobiao1,zuobiao2);
+            else list=kuozhan2(a,p,q,j,k,0,0,0,0,zuobiao1,zuobiao2,color);
             return list;
 
 

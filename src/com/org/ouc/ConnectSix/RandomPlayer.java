@@ -57,6 +57,8 @@ public class RandomPlayer extends ConnectSixPlayer{
             pos1.y=st.zo1.y;
             pos2.x=st.zo2.x;
             pos2.y=st.zo2.y;
+
+
             newSteps=new Move(pos1,pos2);
             return  newSteps;
         }else if(this.getSteps()==1){
@@ -71,6 +73,7 @@ public class RandomPlayer extends ConnectSixPlayer{
         }
         //小样
         /*Cut_chess cc=new Cut_chess(s);
+      /*  Cut_chess cc=new Cut_chess(s);
         int[][] newchess =cc.cut();
         Fpiece fp1=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
         Fpiece fp2=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
@@ -80,11 +83,19 @@ public class RandomPlayer extends ConnectSixPlayer{
         so.fmain();*/
 
         //小鸣
-        test t=new test();
-        zuobiao z1=new zuobiao(so.get_piece1.x,so.get_piece1.y);
-        zuobiao z2=new zuobiao(so.get_piece2.x,so.get_piece2.y);
-        ArrayList<dian> ad=t.shuzu(so.count_num,newchess,cc.k1,cc.k2,cc.lengh1,cc.lengh2,z1,z2);
 
+        test t=new test();
+        /*zuobiao z1=new zuobiao(so.get_piece1.x,so.get_piece1.y);
+        zuobiao z2=new zuobiao(so.get_piece2.x,so.get_piece2.y);
+        ArrayList<dian> ad=t.shuzu(so.count_num,newchess,cc.k1,cc.k2,cc.lengh1,cc.lengh2,z1,z2);*/
+        zuobiao z1=new zuobiao(9,9);
+        zuobiao z2=new zuobiao(10,10);
+         int [][]a=new int[2][2];
+        a[0][0]=;
+        a[0][1]=0;
+        a[1][0]=0;
+        a[1][1]=-1;
+        ArrayList<dian> ad=t.shuzu(0,a,8,8,2,2,z1,z2,1);
         //小高
         Evaluation ev=new Evaluation();
         dian d=ev.GetNextStep(ad);
