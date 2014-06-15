@@ -55,20 +55,29 @@ public class RandomPlayer extends ConnectSixPlayer{
             start st= b.st(s,this.PIECE_ID);
             pos1.x=st.zo1.x;
             pos1.y=st.zo1.y;
-            pos2.x=st.zo2.x+1;
-            pos2.y=st.zo2.y+1;
+            pos2.x=st.zo2.x;
+            pos2.y=st.zo2.y;
+            newSteps=new Move(pos1,pos2);
+            return  newSteps;
+        }else if(this.getSteps()==1){
+            begin b=new begin();
+            start st= b.st(s,this.PIECE_ID);
+            pos1.x=st.zo1.x;
+            pos1.y=st.zo1.y;
+            pos2.x=st.zo2.x;
+            pos2.y=st.zo2.y;
             newSteps=new Move(pos1,pos2);
             return  newSteps;
         }
         //ะกั๙
-        Cut_chess cc=new Cut_chess(s);
+        /*Cut_chess cc=new Cut_chess(s);
         int[][] newchess =cc.cut();
         Fpiece fp1=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
         Fpiece fp2=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
         Solution so=new Solution();
         so.selece(fp1);
         so.selece(fp2);
-        so.fmain();
+        so.fmain();*/
 
         //ะกร๙
         test t=new test();
