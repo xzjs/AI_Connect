@@ -91,12 +91,12 @@ public class RandomPlayer extends ConnectSixPlayer{
         zuobiao z1=new zuobiao(9,9);
         zuobiao z2=new zuobiao(10,10);
          int [][]a=new int[2][2];
-        a[0][0]=1;
-        a[0][1]=0;
-        a[1][0]=0;
-        a[1][1]=-1;
-        ArrayList<dian> ad=t.shuzu(0,a,8,8,2,2,z1,z2,1);
-        //Ð¡¸ß
+        a[0][0]=-1;
+        a[0][1]=1;
+        a[1][0]=1;
+        a[1][1]=0;
+        ArrayList<dian> ad=t.shuzu(0,a,9,9,2,2,z1,z2,-1);
+        //§³??
         Evaluation ev=new Evaluation();
         dian d=ev.GetNextStep(ad);
 

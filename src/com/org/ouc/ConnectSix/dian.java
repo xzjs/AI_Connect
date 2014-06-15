@@ -10,6 +10,10 @@ public class dian {
     public int col;
     public dian(int row,int col)
     {
+
         this.shu=new int[row][col];
+        a1=new zuobiao(0,0);
+        a2=new zuobiao(0,0);
+        a3=new zuobiao(0,0);
     }
 }
