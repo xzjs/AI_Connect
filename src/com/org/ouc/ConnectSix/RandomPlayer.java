@@ -10,6 +10,7 @@ import com.org.ouc.platform.Move;
  */
 public class RandomPlayer extends ConnectSixPlayer{
 
+
 	private Random random = new Random();
 	private Point pos1 = new Point();
 	private Point pos2 = new Point();
@@ -24,7 +25,7 @@ public class RandomPlayer extends ConnectSixPlayer{
 	 */
 	@Override
 	public Move next( int[][] now) {
-		
+
 		System.out.println( "Mine: " + this.PIECE_ID + " Opponet: " + getOpponentPieceID() );
 		int[][] s = now;
 		Move newSteps = null;
@@ -90,7 +91,8 @@ public class RandomPlayer extends ConnectSixPlayer{
         ArrayList<dian> ad=t.shuzu(so.count_num,newchess,cc.k1,cc.k2,cc.lengh1,cc.lengh2,z1,z2);*/
         zuobiao z1=new zuobiao(9,9);
         zuobiao z2=new zuobiao(10,10);
-         int [][]a=new int[2][2];
+
+        int [][]a=new int[2][2];
         a[0][0]=-1;
         a[0][1]=1;
         a[1][0]=1;
@@ -106,6 +108,7 @@ public class RandomPlayer extends ConnectSixPlayer{
         pos2.x=d.a2.x;
         pos2.y=d.a2.y;
         newSteps=new Move(pos1,pos2);
+
         return newSteps;
 	}
 
