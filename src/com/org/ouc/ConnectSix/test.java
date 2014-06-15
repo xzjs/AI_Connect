@@ -13,18 +13,18 @@ public class test {
 
 
 
-        int border=19;//±ß½ç
-        int color;//Æå×ÓÑÕÉ«
+        int border=19;//ï¿½ß½ï¿½
+        int color;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
         public int [][]a;
-        public int[][] fuzhi1(int p,int q,int j,int k,int [][]a,int[][]d2)//µµ´«½øÀ´Ò»¸öµãµÄÊ±ºò¸øÆåÅÌ³õÊ¼»¯
-        {//p,qÊ×ÔªËØµÄºá×ø±ê£¬×Ý×ø±ê£¬j,kÊý×éµÄ³¤¿í£¬a[][]´ú±í´«¹ýÀ´µÄÊý×é£¬d2[][]ÒªÀ©Õ¹µÄÊý×é
+        public int[][] fuzhi1(int p,int q,int j,int k,int [][]a,int[][]d2)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½Ê¼ï¿½ï¿½
+        {//p,qï¿½ï¿½Ôªï¿½ØµÄºï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ê£¬j,kï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½?a[][]ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬d2[][]Òªï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int b,c,e,f;
             if(p==0) e=0;
-            else e=1;//ÉÏ±ßÊÇ·ñµ½±ß
+            else e=1;//ï¿½Ï±ï¿½ï¿½Ç·ñµ½±ï¿½
 
             if(q==0) f=0;
 
-            else f=1;//×ó±ßÊÇ·ñµ½±ß
+            else f=1;//ï¿½ï¿½ï¿½ï¿½Ç·ñµ½±ï¿½
             for(b=e;b<e+j;b++)
             {
                 for(c=e;c<e+k;c++)
@@ -33,20 +33,20 @@ public class test {
             return d2;
 
         }
-        public int[][] fuzhi2(int p,int q,int j,int k,int [][]a,int[][]d2)//µµ´«½øÀ´Á½¸öµãµÄÊ±ºò¸øÆåÅÌ³õÊ¼»¯
-        {//p,qÊ×ÔªËØµÄºá×ø±ê£¬×Ý×ø±ê£¬j,kÊý×éµÄ³¤¿í£¬a[][]´ú±í´«¹ýÀ´µÄÊý×é£¬d2[][]ÒªÀ©Õ¹µÄÊý×é
+        public int[][] fuzhi2(int p,int q,int j,int k,int [][]a,int[][]d2)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½Ê¼ï¿½ï¿½
+        {//p,qï¿½ï¿½Ôªï¿½ØµÄºï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ê£¬j,kï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½?a[][]ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬d2[][]Òªï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int b,c,e,f;
             if(p==0) e=0;
-            else if(p==1)e=1;//ÀëÉÏ±ßÓÐ1¸ñ
-            else e=2;//ÀëÉÏ±ßÓÐ2¸ñ
+            else if(p==1)e=1;//ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½1ï¿½ï¿½
+            else e=2;//ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½2ï¿½ï¿½
             if(q==0) f=0;
-            else if(q==1)f=1;//Àë×ó±ßÓÐ1¸ñ
-            else f=2;//Àë×ó±ßÓÐ2¸ñ
+            else if(q==1)f=1;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½
+            else f=2;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½
             for(b=e;b<e+j;b++)
             {
                 for(c=e;c<e+k;c++)
                     d2[b][c]=a[b-e][c-f];
-            }//½«a[][]´«¸ød2[][]
+            }//ï¿½ï¿½a[][]ï¿½ï¿½ï¿½ï¿½d2[][]
             return d2;
 
         }
@@ -68,14 +68,14 @@ public class test {
                 d2.shu[b][c]=a[b][c];
         return list1;
     }
-        public ArrayList<dian> kuozhan1(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)//À©Õ¹Ò»¸öµã
+        public ArrayList<dian> kuozhan1(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)//ï¿½ï¿½Õ¹Ò»ï¿½ï¿½ï¿½ï¿½
         {
             ArrayList<dian> list1 =new  ArrayList<dian>();
-            dian d2=new dian(j+a1+a3,k+a2+a4);//À©Õ¹
+            dian d2=new dian(j+a1+a3,k+a2+a4);//ï¿½ï¿½Õ¹
             d2.row=j+a1+a3;//row
             d2.col=k+a2+a4;//col
-            d2.a3.x=p-a1;//À©Õ¹Ö®ºóÊ×ÔªËØµÄºá×ø±ê
-            d2.a3.y=q-a2;//×Ý×ø±ê
+            d2.a3.x=p-a1;//ï¿½ï¿½Õ¹Ö®ï¿½ï¿½ï¿½ï¿½Ôªï¿½ØµÄºï¿½ï¿½ï¿½ï¿½
+            d2.a3.y=q-a2;//ï¿½ï¿½ï¿½ï¿½ï¿½
             d2.a2.x=zuobiao1.x;
             d2.a2.y=zuobiao1.y;
             int b,c;
@@ -83,18 +83,18 @@ public class test {
                 for(c=0;c<d2.col;c++)
                 {
                     d2.shu[b][c]=0;
-                }//¸³³õÖµ
-            d2.shu=fuzhi1(p,q,j,k,a,d2.shu);///µµ´«½øÀ´Ò»¸öµãµÄÊ±ºò¸øÆåÅÌ³õÊ¼»¯
-            for(b=0;b<d2.row;b++){//±éÀú¿Õ³öÌî×Ó
+                }//ï¿½ï¿½ï¿½ï¿½Öµ
+            d2.shu=fuzhi1(p,q,j,k,a,d2.shu);///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½Ê¼ï¿½ï¿½
+            for(b=0;b<d2.row;b++){//ï¿½ï¿½ï¿½ï¿½Õ³ï¿½ï¿½ï¿½ï¿½ï¿½
                 for(c=0;c<d2.col;c++)
                 {
                     if(d2.shu[b][c]==0)
                     {
                         d2.shu[b][c]=color;
-                        d2.a1.x=b;//ºá×ø±ê
-                        d2.a1.y=c;//×Ý×ø±ê
+                        d2.a1.x=b;//ï¿½ï¿½ï¿½ï¿½ï¿½
+                        d2.a1.y=c;//ï¿½ï¿½ï¿½ï¿½ï¿½
                         list1.add(d2);
-                        d2.shu[b][c]=0;//»Ö¸´Ô­Êý×é
+                        d2.shu[b][c]=0;//ï¿½Ö¸ï¿½Ô­ï¿½ï¿½ï¿½ï¿½
                     }
                 }
             }
@@ -102,10 +102,10 @@ public class test {
             return list1;
 
         }
-        public ArrayList<dian> kuozhan0(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)//À©Õ¹Á½¸öµã
+        public ArrayList<dian> kuozhan0(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)//ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             ArrayList<dian> list1 =new  ArrayList<dian>();
-            dian d2=new dian(j+a1+a3,k+a2+a4);//À©Õ¹
+            dian d2=new dian(j+a1+a3,k+a2+a4);//ï¿½ï¿½Õ¹
             d2.row=j+a1+a3;
             d2.col=k+a2+a4;
             d2.a3.x=p-a1;
@@ -124,6 +124,8 @@ public class test {
                     if(d2.shu[b][c]==0)
                     {
                         d2.shu[b][c]=color;
+                        d2.a1.x=b;
+                        d2.a1.y=c;
                         for(b1=0;b1<d2.row;b1++)
                             for(c1=0;c1<d2.col;c1++)
                             {
@@ -132,7 +134,9 @@ public class test {
                                     d2.shu[b1][c1]=color;
                                     d2.a2.x=b1;
                                     d2.a2.y=c1;
-                                    list1.add(d2);
+
+
+                                    list1.add((dian)d2.clone());
                                     d2.shu[b1][c1]=0;
                                 }
                             }
@@ -143,11 +147,11 @@ public class test {
                 }
             return list1;
 
-        }//Í¬ÉÏ
+        }//Í¬ï¿½ï¿½
 
 
         public ArrayList<dian> shuzu(int i,int [][]a,int p,int q,int j,int k,zuobiao zuobiao1,zuobiao zuobiao2,int color)
-        //i ±íÊ¾Êý×Ö1£¬2.j£¬k±íÊ¾Êý×éµÄ³¤ºÍ¿í£¬p£¬q±íÊ¾Êý×éµÄÊ×¸öÔªËØÔÚ¾ØÐÎµÄÎ»ÖÃ
+        //i ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½2.jï¿½ï¿½kï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Í¿?pï¿½ï¿½qï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¸ï¿½Ôªï¿½ï¿½ï¿½Ú¾ï¿½ï¿½Îµï¿½Î»ï¿½ï¿½
 
 
         {
@@ -156,23 +160,23 @@ public class test {
             int e,f,g,h;
 
 
-            if(i==0)//´«¹ýÀ´Á½¸öÖµ
+            if(i==0)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
             {
-                if(p==0) e=0;//ÉÏ
+                if(p==0) e=0;//ï¿½ï¿½
                 else if(p==1)e=1;
                 else e=2;
-                if(q==0) f=0;//×ó
+                if(q==0) f=0;//ï¿½ï¿½
                 else if(q==1)f=1;
                 else f=2;
-                if((p+j)==border) g=0;//ÏÂ
+                if((p+j)==border) g=0;//ï¿½ï¿½
                 else if((p+j)==(border-1))g=1;
                 else g=2;
-                if(q+k==border) h=0;//ÓÒ
+                if(q+k==border) h=0;//ï¿½ï¿½
                 else if(q+k==(border-1))h=1;
                 else h=2;
                 list=kuozhan0(a,p,q,j,k,e,f,g,h,zuobiao1,zuobiao2,color);
             }
-            if(i==1)//Í¬ÉÏ
+            else if(i==1)//Í¬ï¿½ï¿½
             {
                 if(p==0) e=0;
                 else e=1;

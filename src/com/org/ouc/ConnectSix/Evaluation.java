@@ -35,7 +35,7 @@ public class Evaluation //«Û∆¿π¿÷µ
         int i = 0, j = 0;
         int[][] status= new int[border][border];
         for(; i < border; i++)
-            for(; j < border; j++)
+            for(j = 0; j < border; j++)
             {
                 if((i >= x) && (i <= x+r-1) && (j>=y) && (j <= y+c-1))
                     status[i][j] = arr[i-x][j-y];

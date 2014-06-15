@@ -95,7 +95,8 @@ public class RandomPlayer extends ConnectSixPlayer{
         a[0][1]=1;
         a[1][0]=1;
         a[1][1]=0;
-        ArrayList<dian> ad=t.shuzu(0,a,9,9,2,2,z1,z2,-1);
+        ArrayList<dian> ad = new ArrayList<dian>();
+        ad=t.shuzu(0,a,9,9,2,2,z1,z2,-1);
         //С��
         Evaluation ev=new Evaluation();
         dian d=ev.GetNextStep(ad);
