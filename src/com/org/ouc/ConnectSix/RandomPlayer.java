@@ -91,7 +91,7 @@ public class RandomPlayer extends ConnectSixPlayer{
         zuobiao z1=new zuobiao(9,9);
         zuobiao z2=new zuobiao(10,10);
          int [][]a=new int[2][2];
-        a[0][0]=;
+        a[0][0]=1;
         a[0][1]=0;
         a[1][0]=0;
         a[1][1]=-1;
