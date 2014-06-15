@@ -6,4 +6,8 @@ package com.org.ouc.ConnectSix;
 public class start {
     zuobiao zo1;
     zuobiao zo2;
+    public start(){
+        zo1=new zuobiao(0,0);
+        zo2=new zuobiao(0,0);
+    }
 }

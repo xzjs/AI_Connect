@@ -4,17 +4,15 @@ package com.org.ouc.ConnectSix;
  * Created by ganyiming on 2014/6/15.
  */
 public class begin {
-    public int border=57;
+    public int border=19;
     public int a[][];
     public int color;
     int center=border/2;
-    public   start st(int a[][],int color)
+    public start st(int a[][],int color)
     {
         start s=new start();
         if (color==-1)
         {
-
-            a[center][center]=-1;
             s.zo1.x=center;
             s.zo1.y=center;
             s.zo2.x=center;
@@ -24,7 +22,6 @@ public class begin {
         {
             if(a[center][center+1]!=-1)
             {
-                a[center][center+1]=1;
                 if(a[center+1][center]!=-1)
                 {
                     a[center+1][center]=1;

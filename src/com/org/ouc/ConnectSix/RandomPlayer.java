@@ -27,7 +27,6 @@ public class RandomPlayer extends ConnectSixPlayer{
 		
 		System.out.println( "Mine: " + this.PIECE_ID + " Opponet: " + getOpponentPieceID() );
 		int[][] s = now;
-        s[10][10]=1;
 		Move newSteps = null;
 		Move last = getLastMove();
 		Move oppoentLastMove = getOpponentLastMove();
@@ -50,7 +49,17 @@ public class RandomPlayer extends ConnectSixPlayer{
 				return newSteps;
 			}
 		}*/
-        static Boolean()
+        if(isFirstStep()) {
+            clearFirstStep();
+            begin b=new begin();
+            start st= b.st(s,this.PIECE_ID);
+            pos1.x=st.zo1.x;
+            pos1.y=st.zo1.y;
+            pos2.x=st.zo2.x+1;
+            pos2.y=st.zo2.y+1;
+            newSteps=new Move(pos1,pos2);
+            return  newSteps;
+        }
         //ะกั๙
         Cut_chess cc=new Cut_chess(s);
         int[][] newchess =cc.cut();
