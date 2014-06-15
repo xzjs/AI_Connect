@@ -381,8 +381,9 @@ public class Evaluation //求评估值
     {
         int value;
         status = Enlarge(point);
+        zuobiao locOfBigForm = new zuobiao(point.a3.x + a.x, point.a3.y + a.y);   //基于大棋局上的着子的位置
 
-        value = SingleDirectionValue(GetHLine(a)) + SingleDirectionValue(GetVLine(a)) + SingleDirectionValue(GetLLine(a)) + SingleDirectionValue(GetRLine(a));
+        value = SingleDirectionValue(GetHLine(locOfBigForm)) + SingleDirectionValue(GetVLine(locOfBigForm)) + SingleDirectionValue(GetLLine(locOfBigForm)) + SingleDirectionValue(GetRLine(locOfBigForm));
 
         return value;
     }
@@ -417,6 +418,12 @@ public class Evaluation //求评估值
                 max = ijk + 1;
             }
         }
+
+      //由list.get(max)得到的是一种小棋局上表示的局面，要进行转化
+        list.get(max).a1.x += list.get(max).a3.x;
+        list.get(max).a1.y += list.get(max).a3.y;
+        list.get(max).a2.x += list.get(max).a3.x;
+        list.get(max).a2.y += list.get(max).a3.y;
 
         return list.get(max);
     }

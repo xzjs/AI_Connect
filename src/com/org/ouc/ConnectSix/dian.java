@@ -5,7 +5,7 @@ package com.org.ouc.ConnectSix;
  */
 public class dian implements Cloneable  {
     public int[][]shu;
-    public zuobiao a1,a2,a3;//a1,a2为下棋的点的坐标，a3为矩阵首元素在棋盘的坐标
+    public zuobiao a1,a2,a3;//a1,a2为下棋的点的坐标,基于小棋局上的，a3为矩阵首元素在棋盘的坐标
     public int row;//共几行
     public int col;
     public Object clone() {
@@ -16,6 +16,9 @@ public class dian implements Cloneable  {
             o.a2=(zuobiao)a2.clone();
             o.a3=(zuobiao)a3.clone();
             o.shu=shu.clone();
+            for(int b=0;b<o.row;b++)
+                shu[b]=shu[b].clone();
+
 
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
