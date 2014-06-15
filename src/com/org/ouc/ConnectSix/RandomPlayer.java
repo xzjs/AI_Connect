@@ -11,26 +11,26 @@ import com.org.ouc.platform.Move;
 public class RandomPlayer extends ConnectSixPlayer{
 
 
-	private Random random = new Random();
-	private Point pos1 = new Point();
-	private Point pos2 = new Point();
-	
-	/*
-	 * now�洢���̸�ֵĶ�ά���飬 �������߽�
-	 * ���now[i][j] == this.PIECE_ID,��һλ�����Լ����ӣ�
-	 * ���now[i][j] == getOpponentPieceID(),��һλ���Ƕ��ֵ��ӣ�
-	 * ����now[i][j] ��һλ���ǿյġ�
-	 * ��ConnectSixPlayer��������һ������ Move getOpponentLastStep();��ȡ�����ϴε��߲�
-	 * 
-	 */
-	@Override
-	public Move next( int[][] now) {
+    private Random random = new Random();
+    private Point pos1 = new Point();
+    private Point pos2 = new Point();
 
-		System.out.println( "Mine: " + this.PIECE_ID + " Opponet: " + getOpponentPieceID() );
-		int[][] s = now;
-		Move newSteps = null;
-		Move last = getLastMove();
-		Move oppoentLastMove = getOpponentLastMove();
+    /*
+     * now�洢���̸�ֵĶ�ά���飬 �������߽�
+     * ���now[i][j] == this.PIECE_ID,��һλ�����Լ����ӣ�
+     * ���now[i][j] == getOpponentPieceID(),��һλ���Ƕ��ֵ��ӣ�
+     * ����now[i][j] ��һλ���ǿյġ�
+     * ��ConnectSixPlayer��������һ������ Move getOpponentLastStep();��ȡ�����ϴε��߲�
+     *
+     */
+    @Override
+    public Move next( int[][] now) {
+
+        System.out.println( "Mine: " + this.PIECE_ID + " Opponet: " + getOpponentPieceID() );
+        int[][] s = now;
+        Move newSteps = null;
+        Move last = getLastMove();
+        Move oppoentLastMove = getOpponentLastMove();
 		
 		/*while(true){
 			// ���ѡ��һ��λ�ã�����λ�����Ƿ��и����ֵ�����
@@ -110,6 +110,6 @@ public class RandomPlayer extends ConnectSixPlayer{
         newSteps=new Move(pos1,pos2);
 
         return newSteps;
-	}
+    }
 
 }
