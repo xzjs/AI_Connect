@@ -51,16 +51,7 @@ public class RandomPlayer extends ConnectSixPlayer {
 			}
 		}*/
 
-        switch (this.PIECE_ID){
-            case 1:
-                ZongQiPan.bai.ali.add(now.clone());
-                break;
-            case -1:
-                ZongQiPan.hei.ali.add(now.clone());
-                break;
-            default:
-                break;
-        }
+        ZongQiPan.Add(this.PIECE_ID,s.clone());
 
         //¿ª¾Ö
         if (isFirstStep()) {
@@ -72,6 +63,7 @@ public class RandomPlayer extends ConnectSixPlayer {
             pos2.x = st.zo2.x;
             pos2.y = st.zo2.y;
             newSteps = new Move(pos1, pos2);
+            ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
             return newSteps;
         } else if (this.getSteps() == 1) {
             begin b = new begin();
@@ -81,6 +73,7 @@ public class RandomPlayer extends ConnectSixPlayer {
             pos2.x = st.zo2.x;
             pos2.y = st.zo2.y;
             newSteps = new Move(pos1, pos2);
+            ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
             return newSteps;
         }
 
@@ -124,6 +117,7 @@ public class RandomPlayer extends ConnectSixPlayer {
                 }
             }
             newSteps=new Move(pos1,pos2);
+            ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
             return newSteps;
         }
 
@@ -162,6 +156,14 @@ public class RandomPlayer extends ConnectSixPlayer {
         pos2.x = d.a2.x;
         pos2.y = d.a2.y;
         newSteps = new Move(pos1, pos2);
+        ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
+        if(ev.getFlag()){
+            GaoXing gs=new GaoXing();
+            try {
+                gs.Add(ZongQiPan.GetArryList(this.PIECE_ID), this.PIECE_ID);
+            }
+            catch (Exception ex){
+        }
         return newSteps;
     }
 

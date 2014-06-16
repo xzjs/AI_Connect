@@ -1,10 +1,10 @@
-/*
 package com.org.ouc.ConnectSix;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class GaoXing {
@@ -14,7 +14,7 @@ public class GaoXing {
     private final static int REAL_WIDTH = 9;
     private static String midString = "";
     */
-/*    private static List<PhaseList> phaseLists = null;
+    private static List<PhaseList> phaseLists = null;
 
 
     public List<PhaseList> testSearch(){
@@ -32,7 +32,7 @@ public class GaoXing {
 			}
 		*/
 
-/*        return phaseLists;
+        return phaseLists;
 
 
     }
@@ -86,5 +86,5 @@ public class GaoXing {
 
     }
 }
-	
-*/
+
+
