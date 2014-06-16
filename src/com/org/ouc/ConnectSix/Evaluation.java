@@ -20,6 +20,14 @@ public class Evaluation //求评估值
     int[][] status= new int[border][border];
     int stepIndex;//着子点在一维数组中的序号
 
+    boolean flag = false;//判断是否已形成六连，1为是
+
+    public boolean getFlag()
+    {
+        return flag;
+    }
+
+
     //扩展为真实棋盘,
     public int[][] Enlarge(dian point)
     //arr[][]待扩展
@@ -210,7 +218,10 @@ public class Evaluation //求评估值
 
         ////下面求value值
         if(linkLong >= 6)
+        {
+            flag = true;
             value = 1000;//六连
+        }
         else if(linkLong == 5)
         {
             if(statusArr[0] == 0 && statusArr[statusArrLong] == 0 && space>= 2)
