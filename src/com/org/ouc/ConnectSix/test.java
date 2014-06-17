@@ -66,6 +66,7 @@ public class test {
         for(b=0;b<d2.row;b++)
             for(c=0;c<d2.col;c++)
                 d2.shu[b][c]=a[b][c];
+               list1.add((dian)d2.clone());
         return list1;
     }
         public ArrayList<dian> kuozhan1(int [][]a,int p,int q,int j,int k,int a1,int a2,int a3,int a4,zuobiao zuobiao1,zuobiao zuobiao2,int color)//��չһ����
@@ -93,7 +94,7 @@ public class test {
                         d2.shu[b][c]=color;
                         d2.a1.x=b;//�����
                         d2.a1.y=c;//�����
-                        list1.add(d2);
+                        list1.add((dian)d2.clone());
                         d2.shu[b][c]=0;//�ָ�ԭ����
                     }
                 }

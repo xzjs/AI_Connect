@@ -195,7 +195,7 @@ public class Evaluation //«Û∆¿π¿÷µ
                 break;
             }
         }
-        leftRange--;
+        rightRange--;
 
         leftSpace = leftEdge - leftRange;
         rightSpace = rightRange - rightEdge;

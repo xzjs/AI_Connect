@@ -4,9 +4,9 @@ package com.org.ouc.ConnectSix;
  * Created by xzjs on 2014/6/14.
  */
 public class Cut_chess {
-    int k1, k2, h1, h2;//[k1][k2]ÎªÐ¡Ã÷ÒªµÄµÚÒ»¸ö×ø±ê¡£
-    int lengh1;//ÐÐ
-    int lengh2;//ÁÐ
+    int k1, k2, h1, h2;//[k1][k2]ÎªÐ¡ï¿½ï¿½Òªï¿½Äµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ê¡£
+    int lengh1;//ï¿½ï¿½
+    int lengh2;//ï¿½ï¿½
     public static int[][] chess;
     public Cut_chess(int rchess[][]){
         chess=rchess.clone();
@@ -14,52 +14,57 @@ public class Cut_chess {
     public int[][] cut(){
         int i = 0;
         int j = 0;
-        while (chess[i][j] == 0 && j < 59) {//k1.h1·Ö±ð¼ÇÂ¼¾Ö²¿ÆåÅÌµÄµÚÒ»ÐÐºÍ×îºóÒ»ÐÐ£»
-            //k2.h2·Ö±ð¼ÇÂ¼¾Ö²¿ÆåÅÌµÄµÚÒ»ÁÐºÍ×îºóÒ»ÁÐ£»
+        while (chess[i][j] == 0 && j < 19) {//k1.h1ï¿½Ö±ï¿½ï¿½Â¼ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ÌµÄµï¿½Ò»ï¿½Ðºï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ð£ï¿½
+            //k2.h2ï¿½Ö±ï¿½ï¿½Â¼ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ÌµÄµï¿½Ò»ï¿½Ðºï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ð£ï¿½
             j++;
-            if (j == 59) {
+            if (j == 19) {
                 j = 0;
                 i = i + 1;
             }
         }
         k1 = i;
         j = 0;
-        i = 58;
-        while (chess[i][j] == 0 && j < 59) {
+        i = 18;
+        while (chess[i][j] == 0 && j < 19) {
             j++;
-            if (j == 59) {
+            if (j == 19) {
                 j = 0;
                 i = i - 1;
             }
         }
         h1 = i;
-        lengh2 = h1 - k1;
+        if(h1==k1){
+          h1=h1+1;
+        }
+        lengh1 = h1 - k1+1;
         i = j = 0;
-        while (chess[i][j] == 0 && i < 59) {
+        while (chess[i][j] == 0 && i < 19) {
             i++;
-            if (i == 59) {
+            if (i == 19) {
                 i = 0;
                 j = j + 1;
             }
         }
         k2 = j;
         i = 0;
-        j = 58;
-        while (chess[i][j] == 0 && i < 59) {
+        j = 18;
+        while (chess[i][j] == 0 && i < 19) {
             i++;
-            if (i == 59) {
+            if (i == 19) {
                 i = 0;
                 j = j - 1;
             }
         }
         h2 = j;
-        lengh1 = h2 - k2;
+        if(k2==h2)
+          h2=h2+1;
+        lengh2 = h2 - k2+1;
         int[][] cut_chess = new int[lengh1][lengh2];
         int m=0;
-        for (i = k1; i < h1; i++)
+        for (i = k1; i <= h1; i++)
         {
             int n=0;
-            for (j = k2; j < h2; j++) {
+            for (j = k2; j <=h2; j++) {
                 cut_chess[m][n] = chess[i][j];
                 n++;
             }

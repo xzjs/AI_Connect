@@ -33,7 +33,7 @@ public class RandomPlayer extends ConnectSixPlayer {
         Move oppoentLastMove = getOpponentLastMove();
 
 		/*while(true){
-			// 随机选择一个位置，看该位置上是否有该棋手的棋子
+            // 随机选择一个位置，看该位置上是否有该棋手的棋子
 			pos1.x = random.nextInt(now.length);
 			pos1.y = random.nextInt(now[0].length);
 			pos2.x = random.nextInt(now.length);
@@ -51,7 +51,7 @@ public class RandomPlayer extends ConnectSixPlayer {
 			}
 		}*/
 
-        ZongQiPan.Add(this.PIECE_ID,s.clone());
+        ZongQiPan.Add(this.PIECE_ID, s.clone());
 
         //开局
         if (isFirstStep()) {
@@ -63,7 +63,7 @@ public class RandomPlayer extends ConnectSixPlayer {
             pos2.x = st.zo2.x;
             pos2.y = st.zo2.y;
             newSteps = new Move(pos1, pos2);
-            ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
+            ZongQiPan.AddMove(newSteps, s, this.PIECE_ID);
             return newSteps;
         } else if (this.getSteps() == 1) {
             begin b = new begin();
@@ -73,72 +73,78 @@ public class RandomPlayer extends ConnectSixPlayer {
             pos2.x = st.zo2.x;
             pos2.y = st.zo2.y;
             newSteps = new Move(pos1, pos2);
-            ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
+            ZongQiPan.AddMove(newSteps, s, this.PIECE_ID);
             return newSteps;
         }
 
         //查找xml文件
-       /* String phaseString = new String();
-        for(int i=0;i<19;i++){
-            for(int j=0;j<19;j++){
-                switch(now[i][j]){
-                    case -1:phaseString += "2";break;
-                    case  0:phaseString += "0";break;
-                    case  1:phaseString += "1";break;
+        String phaseString = new String();
+        for (int i = 0; i < 19; i++) {
+            for (int j = 0; j < 19; j++) {
+                switch (now[i][j]) {
+                    case -1:
+                        phaseString += "2";
+                        break;
+                    case 0:
+                        phaseString += "0";
+                        break;
+                    case 1:
+                        phaseString += "1";
+                        break;
                 }
             }
         }
         Phase phase = new Phase();
         phase.setPhaseString(phaseString);
-        Search ssss=new Search();
-        int[][] next = ssss.search(phase,1,1);
+        Search ssss = new Search();
+        int[][] next = ssss.search(phase, 1, 1);
 
-        if(next!=null) {
-            int ste=0;
-            for(int i=0;i<19;i++){
-                for (int j=0;j<19;j++){
-                    if(now[i][j]!=next[i][j]){
-                        if(ste==0){
-                            pos1.x=i;
-                            pos1.y=j;
+        if (next != null) {
+            int ste = 0;
+            for (int i = 0; i < 19; i++) {
+                for (int j = 0; j < 19; j++) {
+                    if (now[i][j] != next[i][j]) {
+                        if (ste == 0) {
+                            pos1.x = i;
+                            pos1.y = j;
                             ste++;
-                        }else {
-                            pos2.x=i;
-                            pos2.y=j;
+                        } else {
+                            pos2.x = i;
+                            pos2.y = j;
                             ste++;
                         }
                     }
-                    if (ste==2){
+                    if (ste == 2) {
                         break;
                     }
                 }
-                if ((ste==2)){
+                if ((ste == 2)) {
                     break;
                 }
             }
-            newSteps=new Move(pos1,pos2);
-            ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
+            newSteps = new Move(pos1, pos2);
+            ZongQiPan.AddMove(newSteps, s, this.PIECE_ID);
             return newSteps;
         }
 
         //小样
-        /*Cut_chess cc=new Cut_chess(s);
-      /*  Cut_chess cc=new Cut_chess(s);
+        Cut_chess cc=new Cut_chess(s);
         int[][] newchess =cc.cut();
-        Fpiece fp1=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
-        Fpiece fp2=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
-        Solution so=new Solution();
+        Fpiece fp1=new Fpiece(18-oppoentLastMove.getStartPoint().getX(),18-oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
+        Fpiece fp2=new Fpiece(18-oppoentLastMove.getEndPoint().getX(),18-oppoentLastMove.getEndPoint().getY(),getOpponentPieceID());
+        Solution so=new Solution(fp1,fp2);
         so.selece(fp1);
         so.selece(fp2);
-        so.fmain();*/
+        so.fmain(fp1);
+        so.fmain(fp2);
 
         //小鸣
 
         test t = new test();
-        /*zuobiao z1=new zuobiao(so.get_piece1.x,so.get_piece1.y);
+        zuobiao z1=new zuobiao(so.get_piece1.x,so.get_piece1.y);
         zuobiao z2=new zuobiao(so.get_piece2.x,so.get_piece2.y);
-        ArrayList<dian> ad=t.shuzu(so.count_num,newchess,cc.k1,cc.k2,cc.lengh1,cc.lengh2,z1,z2);*/
-        zuobiao z1 = new zuobiao(9, 9);
+        ArrayList<dian> ad=t.shuzu(so.count_num,newchess,cc.k1,cc.k2,cc.lengh1,cc.lengh2,z1,z2,this.PIECE_ID);
+        /*zuobiao z1 = new zuobiao(9, 9);
         zuobiao z2 = new zuobiao(10, 10);
 
         int[][] a = new int[2][2];
@@ -146,7 +152,8 @@ public class RandomPlayer extends ConnectSixPlayer {
         a[0][1] = 1;
         a[1][0] = 1;
         a[1][1] = 0;
-        ArrayList<dian> ad = t.shuzu(0, a, 9, 9, 2, 2, z1, z2, -1);
+        ArrayList<dian> ad = t.shuzu(0, a, 9, 9, 2, 2, z1, z2, -1);*/
+
         //小高
         Evaluation ev = new Evaluation();
         dian d = ev.GetNextStep(ad);
@@ -156,15 +163,16 @@ public class RandomPlayer extends ConnectSixPlayer {
         pos2.x = d.a2.x;
         pos2.y = d.a2.y;
         newSteps = new Move(pos1, pos2);
-        ZongQiPan.AddMove(newSteps,s,this.PIECE_ID);
-        if(ev.getFlag()){
-            GaoXing gs=new GaoXing();
+        ZongQiPan.AddMove(newSteps, s, this.PIECE_ID);
+        if (ev.getFlag()) {
+            GaoXing gs = new GaoXing();
             try {
                 gs.Add(ZongQiPan.GetArryList(this.PIECE_ID), this.PIECE_ID);
+            } catch (Exception ex) {
             }
-            catch (Exception ex){
+
         }
         return newSteps;
-    }
 
+    }
 }
