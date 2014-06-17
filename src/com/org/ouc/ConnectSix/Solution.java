@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Solution {
     Fpiece piece1;
     Fpiece piece2;
-    Fpiece get_piece1;
-    Fpiece get_piece2;
+    Fpiece get_piece1=new Fpiece(0,0,1);
+    Fpiece get_piece2=new Fpiece(0,0,1);
     ArrayList<Integer> X_Axis=new ArrayList<Integer>() ;
     ArrayList<Integer> Y_Axis=new ArrayList<Integer>() ;
     ArrayList<Integer> Z_1_Axis=new ArrayList<Integer>() ;
@@ -308,7 +308,7 @@ public class Solution {
 
     public void fmain(Fpiece piece1){
 
-            if(get_piece1==null) {
+            if(get_piece1.x==0&&get_piece1.y==0&&get_piece1.flag==1) {
                 switch (selece(piece1)) {
                     case 1: {
                         if (count_num == 2) {
@@ -364,8 +364,7 @@ public class Solution {
                     break;
                     case 5: {
                         count_num = 0;
-                        get_piece1 = new Fpiece(0, 0, 1);
-                        get_piece2 = new Fpiece(0, 0, 1);
+
 
 
                     }
