@@ -224,7 +224,7 @@ public class Evaluation //求评估值
         }
         else if(linkLong == 5)
         {
-            if(statusArr[0] == 0 && statusArr[statusArrLong] == 0 && space>= 2)
+            if(statusArr[0] == 0 && statusArr[statusArrLong - 1] == 0 && space>= 2)
                 value = 200;//活五
             else if(space == 0)
                 value = 0;//死五
@@ -436,7 +436,7 @@ public class Evaluation //求评估值
 
                 }
             }catch (Exception ex){
-
+                i++;
             }
 
 
@@ -447,7 +447,9 @@ public class Evaluation //求评估值
                     max = ijk + 1;
                 }
             }
-
+            int testvalue2;
+            testvalue2 = valueList.get(max);
+            int nouse = 0;
         }
 
       //由list.get(max)得到的是一种小棋局上表示的局面，要进行转化
