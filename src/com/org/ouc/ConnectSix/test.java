@@ -77,8 +77,8 @@ public class test {
             d2.col=k+a2+a4;//col
             d2.a3.x=p-a1;//��չ֮����Ԫ�صĺ����
             d2.a3.y=q-a2;//�����
-            d2.a2.x=zuobiao1.x;
-            d2.a2.y=zuobiao1.y;
+            d2.a1.x=zuobiao1.x;
+            d2.a1.y=zuobiao1.y;
             int b,c;
             for(b=0;b<d2.row;b++)
                 for(c=0;c<d2.col;c++)
@@ -92,8 +92,8 @@ public class test {
                     if(d2.shu[b][c]==0)
                     {
                         d2.shu[b][c]=color;
-                        d2.a1.x=b;//�����
-                        d2.a1.y=c;//�����
+                        d2.a2.x=b;//�����
+                        d2.a2.y=c;//�����
                         list1.add((dian)d2.clone());
                         d2.shu[b][c]=0;//�ָ�ԭ����
                     }

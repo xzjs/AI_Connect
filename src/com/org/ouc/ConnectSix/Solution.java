@@ -12,12 +12,13 @@ public class Solution {
     Fpiece piece2;
     Fpiece get_piece1;
     Fpiece get_piece2;
-    static ArrayList<Integer> X_Axis=new ArrayList<Integer>() ;
-    static ArrayList<Integer> Y_Axis=new ArrayList<Integer>() ;
-    static ArrayList<Integer> Z_1_Axis=new ArrayList<Integer>() ;
-    static ArrayList<Integer> Z_2_Axis=new ArrayList<Integer>() ;
+    ArrayList<Integer> X_Axis=new ArrayList<Integer>() ;
+    ArrayList<Integer> Y_Axis=new ArrayList<Integer>() ;
+    ArrayList<Integer> Z_1_Axis=new ArrayList<Integer>() ;
+    ArrayList<Integer> Z_2_Axis=new ArrayList<Integer>() ;
     int count_num=0;//��¼���ص�ĸ���
     int [][] S_chess;
+    int keyflg=0;
     int location1;
     int location2;//��¼ÿ�������鴦���õ��ĵ��λ�ã�
     int x_location=0;//��location��ӵõ��������ϵ���ꣻ
@@ -30,14 +31,15 @@ public class Solution {
     }
     public ArrayList<Integer> Get_X_Axis(Fpiece piece){//�Ӻ��������õ�X�᷽���һ������X_Axis[]��
         int x=piece.x;
+        X_Axis.clear();
         int y=piece.y;
         int flag=piece.flag;
         int flg=0;
         int i=1;
         int u=1;
-        while(flg!=3&&(x-i)>=0&&Cut_chess.chess[x-i][y]!=-flag){
+        while((y-i)>=0&&Cut_chess.chess[x][y-i]!=-flag&&flg!=3){
             u=u+1;
-            if(Cut_chess.chess[x-i][y]==0)
+            if(Cut_chess.chess[x][y-i]==0)
                 flg++;
             else
                 flg=0;
@@ -48,7 +50,7 @@ public class Solution {
         }
       
         
-        while(u!=1&&i>0){           
+        while(u!=1&&i>0){
             X_Axis.add( Cut_chess.chess[x][y-i+1]);
             i--;
            
@@ -69,6 +71,7 @@ public class Solution {
 
     public ArrayList<Integer> Get_Y_Axis (Fpiece piece) {//�����������õ�Y�᷽���һ������Y_Axis[]��
         int x=piece.x;
+        Y_Axis.clear();
         int y=piece.y;
         int flag=piece.flag;
         int flg=0;
@@ -88,7 +91,7 @@ public class Solution {
      
         while(u!=1&&i>0){
             
-            Y_Axis.add(Cut_chess.chess[x-i][y]);
+            Y_Axis.add(Cut_chess.chess[x-i+1][y]);
             i--;
             
         }
@@ -108,6 +111,7 @@ public class Solution {
 
     public ArrayList<Integer>Get_Z_1_Axis(Fpiece piece){//��/���������õ�����Z_1_Axis[]��
         int x=piece.x;
+        Z_1_Axis.clear();
         int y=piece.y;
         int flag=piece.flag;
         int flg=0;
@@ -127,7 +131,7 @@ public class Solution {
         
         while(u!=1&&i>0){
            
-            Z_1_Axis.add(Cut_chess.chess[x+i][y-i]);
+            Z_1_Axis.add(Cut_chess.chess[x+i-1][y-i+1]);
             i--;
          
         }
@@ -147,6 +151,7 @@ public class Solution {
 
     public ArrayList<Integer> Get_Z_2_Axis(Fpiece piece){//��\���������õ�����Z_2_Axis[]��
         int x=piece.x;
+        Z_2_Axis.clear();
         int y=piece.y;
         int flag=piece.flag;
         int flg=0;
@@ -166,7 +171,7 @@ public class Solution {
   
         while(u!=1&&i>0){
             
-            Z_2_Axis.add(Cut_chess.chess[x-i][y-i]);
+            Z_2_Axis.add(Cut_chess.chess[x-i+1][y-i+1]);
             i--;
       
         }
@@ -209,7 +214,7 @@ public class Solution {
                         }
                         if(f==5)
                           flg=0;
-                      else
+
                           Axis.set(j,0);
                     }
                     j++;
@@ -224,17 +229,17 @@ public class Solution {
             int n=0;
             int m;
             int flg2=6;
-            int h=0;
-            int [] num=new int [h+1];//��¼������Ϊ0���±ꣻ
+
+            ArrayList<Integer> num=new ArrayList<Integer>();//��¼������Ϊ0���±ꣻ
             while(n<Axis.size()&&flg2==6){//�������пհ״��������Ϊ-piece1.flag,����հ�ȫ��piece1.flag��䣬�ж��Ƿ��������6�ӻ����
                 if(Axis.get(n)==0){
-                    num[h]=n;
-                    h++;
+                    num.add(n);
+
                     Axis.set(n,-piece1.flag);
                     ReAxis=(ArrayList<Integer> )Axis.clone();
                     for(m=n+1;m<Axis.size();m++){
                         if(ReAxis.get(m)==0)
-                            ReAxis.set(m,piece1.flag);
+                            ReAxis.set(m,-piece1.flag);
                     }
                     flg2=1;
                     for(m=0;m<ReAxis.size()-1;m++){
@@ -254,7 +259,7 @@ public class Solution {
             }
             int x=0;//�����ж���˴�flg2һ��С��6��
             while(flg2<6){//�����������-flagֱ����������6�ӻ����ʱ�������ν�ԭ�����Ϊ-flag����Ϊflag���жϸĺ��Ƿ��������6�ӻ����
-                int y=num[x];
+                int y=num.get(x);
                 flg2=1;
                 ReAxis.set(y,piece1.flag);//��ԭ��0����Ϊflag��
                 for(m=0;m<ReAxis.size()-1;m++){
@@ -269,14 +274,16 @@ public class Solution {
                 }
                 x++;
             }
-            if(x<num.length){//location1��2�Ƿֱ��¼�µ���2�������ꣻ���x=num.length˵��ֻ��һ����Ϳ��Զ����ˣ�
-                location1=num[x-1];
-                location2=num[x];
+            if(x<num.size()){//location1��2�Ƿֱ��¼�µ���2�������ꣻ���x=num.length˵��ֻ��һ����Ϳ��Զ����ˣ�
+                location1=num.get(x-1);
+                location2=num.get(x);
                 count_num=2;
+                keyflg=1;
             }
             else {
-                location1=num[x-1];
+                location1=num.get(x-1);
                 count_num=1;
+                keyflg=1;
             }
 
             return 1;
@@ -300,67 +307,71 @@ public class Solution {
     }
 
     public void fmain(Fpiece piece1){
-        switch(selece(piece1)){
-            case 1:{
-                if(count_num==2){
-                    get_piece1=new Fpiece(piece1.x,piece1.y-x_location+location1,-piece1.flag);
-                    get_piece2=new Fpiece(piece1.x,piece1.y-x_location+location2,-piece1.flag);
-                    Cut_chess.chess[piece1.x][piece1.y-x_location+location1]=-piece1.flag;
-                    Cut_chess.chess[piece1.x][piece1.y-x_location+location2]=-piece1.flag;
-                }
-                else {
-                    get_piece1=new Fpiece(piece1.x,piece1.y-x_location+location1,-piece1.flag);
-                    Cut_chess.chess[piece1.x][piece1.y-x_location+location1]=-piece1.flag;
-                    get_piece2=new Fpiece(0,0,1);
-                }
-            }break;
-            case 2:{
-                if(count_num==2){
-                    get_piece1=new Fpiece(piece1.x-y_location+location1,piece1.y,-piece1.flag);
-                    get_piece2=new Fpiece(piece1.x-y_location+location2,piece1.y,-piece1.flag);
-                    Cut_chess.chess[piece1.x-y_location+location1][piece1.y]=-piece1.flag;
-                    Cut_chess.chess[piece1.x-y_location+location2][piece1.y]=-piece1.flag;
-                }
-                else {
-                    get_piece1=new Fpiece(piece1.x-y_location+location1,piece1.y,-piece1.flag);
-                    Cut_chess.chess[piece1.x-y_location+location1][piece1.y]=-piece1.flag;
-                    get_piece2=new Fpiece(0,0,1);
-                }
-            }break;
-            case 3:{
-                if(count_num==2){
-                    get_piece1=new Fpiece(piece1.x+Z_1_1ocation+location1,piece1.y-Z_1_1ocation+location1,-piece1.flag);
-                    get_piece2=new Fpiece(piece1.x+Z_1_1ocation+location2,piece1.y-Z_1_1ocation+location2,-piece1.flag);
-                    Cut_chess.chess[piece1.x+Z_1_1ocation+location1][piece1.y-Z_1_1ocation+location1]=-piece1.flag;
-                    Cut_chess.chess[piece1.x+Z_1_1ocation+location2][piece1.y-Z_1_1ocation+location2]=-piece1.flag;
-                }
-                else {
-                    get_piece1=new Fpiece(piece1.x+Z_1_1ocation+location1,piece1.y-Z_1_1ocation+location1,-piece1.flag);
-                    Cut_chess.chess[piece1.x+Z_1_1ocation+location1][piece1.y-Z_1_1ocation+location1]=-piece1.flag;
-                    get_piece2=new Fpiece(0,0,1);
-                }
-            }break;
-            case 4:{
-                if(count_num==2){
-                    get_piece1=new Fpiece(piece1.x-Z_2_location+location1,piece1.y-Z_2_location-location1,-piece1.flag);
-                    get_piece2=new Fpiece(piece1.x-Z_2_location+location2,piece1.y-Z_2_location-location2,-piece1.flag);
-                    Cut_chess.chess[piece1.x-Z_2_location+location1][piece1.y-Z_2_location-location1]=-piece1.flag;
-                    Cut_chess.chess[piece1.x-Z_2_location+location2][piece1.y-Z_2_location-location2]=-piece1.flag;
-                }
-                else {
-                    get_piece1=new Fpiece(piece1.x-Z_2_location+location1,piece1.y-Z_2_location-location1,-piece1.flag);
-                    Cut_chess.chess[piece1.x-Z_2_location+location1][piece1.y-Z_2_location-location1]=-piece1.flag;
-                    get_piece2=new Fpiece(0,0,1);
-                }
-            }break;
-            case 5:{
+
+
+            switch(selece(piece1)){
+                case 1:{
+                    if(count_num==2){
+                        get_piece1=new Fpiece(piece1.x,piece1.y-x_location+location1,-piece1.flag);
+                        get_piece2=new Fpiece(piece1.x,piece1.y-x_location+location2,-piece1.flag);
+                        Cut_chess.chess[piece1.x][piece1.y-x_location+location1]=-piece1.flag;
+                        Cut_chess.chess[piece1.x][piece1.y-x_location+location2]=-piece1.flag;
+                    }
+                    else {
+                        get_piece1=new Fpiece(piece1.x,piece1.y-x_location+location1,-piece1.flag);
+                        Cut_chess.chess[piece1.x][piece1.y-x_location+location1]=-piece1.flag;
+                        get_piece2=new Fpiece(0,0,1);
+                    }
+                }break;
+                case 2:{
+                    if(count_num==2){
+                        get_piece1=new Fpiece(piece1.x-y_location+location1,piece1.y,-piece1.flag);
+                        get_piece2=new Fpiece(piece1.x-y_location+location2,piece1.y,-piece1.flag);
+                        Cut_chess.chess[piece1.x-y_location+location1][piece1.y]=-piece1.flag;
+                        Cut_chess.chess[piece1.x-y_location+location2][piece1.y]=-piece1.flag;
+                    }
+                    else {
+                        get_piece1=new Fpiece(piece1.x-y_location+location1,piece1.y,-piece1.flag);
+                        Cut_chess.chess[piece1.x-y_location+location1][piece1.y]=-piece1.flag;
+                        get_piece2=new Fpiece(0,0,1);
+                    }
+                }break;
+                case 3:{
+                    if(count_num==2){
+                        get_piece1=new Fpiece(piece1.x+Z_1_1ocation+location1,piece1.y-Z_1_1ocation+location1,-piece1.flag);
+                        get_piece2=new Fpiece(piece1.x+Z_1_1ocation+location2,piece1.y-Z_1_1ocation+location2,-piece1.flag);
+                        Cut_chess.chess[piece1.x+Z_1_1ocation+location1][piece1.y-Z_1_1ocation+location1]=-piece1.flag;
+                        Cut_chess.chess[piece1.x+Z_1_1ocation+location2][piece1.y-Z_1_1ocation+location2]=-piece1.flag;
+                    }
+                    else {
+                        get_piece1=new Fpiece(piece1.x+Z_1_1ocation+location1,piece1.y-Z_1_1ocation+location1,-piece1.flag);
+                        Cut_chess.chess[piece1.x+Z_1_1ocation+location1][piece1.y-Z_1_1ocation+location1]=-piece1.flag;
+                        get_piece2=new Fpiece(0,0,1);
+                    }
+                }break;
+                case 4:{
+                    if(count_num==2){
+                        get_piece1=new Fpiece(piece1.x-Z_2_location+location1,piece1.y-Z_2_location-location1,-piece1.flag);
+                        get_piece2=new Fpiece(piece1.x-Z_2_location+location2,piece1.y-Z_2_location-location2,-piece1.flag);
+                        Cut_chess.chess[piece1.x-Z_2_location+location1][piece1.y-Z_2_location-location1]=-piece1.flag;
+                        Cut_chess.chess[piece1.x-Z_2_location+location2][piece1.y-Z_2_location-location2]=-piece1.flag;
+                    }
+                    else {
+                        get_piece1=new Fpiece(piece1.x-Z_2_location+location1,piece1.y-Z_2_location-location1,-piece1.flag);
+                        Cut_chess.chess[piece1.x-Z_2_location+location1][piece1.y-Z_2_location-location1]=-piece1.flag;
+                        get_piece2=new Fpiece(0,0,1);
+                    }
+                }break;
+                case 5:{
                     count_num=0;
                     get_piece1=new Fpiece(0,0,1);
                     get_piece2=new Fpiece(0,0,1);
-                    
-                    
-            }break;
-        }
+
+
+                }break;
+            }
+
+
 
        
     }

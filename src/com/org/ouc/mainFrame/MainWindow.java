@@ -405,7 +405,7 @@ public class MainWindow extends JFrame{
 					System.out.println("Local Random Player");
 				}
 		    }else{
-		    	pyb = new com.org.ouc.ConnectSix.RandomPlayer(); // 加载默认的RandomPlayer
+		    	pyb = new com.org.ouc.ConnectSix.WhitePlayer(); // 加载默认的RandomPlayer
 				System.out.println("Local Random Player");
 		    }
 		    pyb.setTurn(1);

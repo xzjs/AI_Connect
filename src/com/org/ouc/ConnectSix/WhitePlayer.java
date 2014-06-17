@@ -9,7 +9,7 @@ import com.org.ouc.platform.Move;
 /*
  * 
  */
-public class RandomPlayer extends ConnectSixPlayer {
+public class WhitePlayer extends ConnectSixPlayer {
 
     private Random random = new Random();
     private Point pos1 = new Point();
