@@ -58,10 +58,10 @@ public class test {
         d2.col=k;
         d2.a3.x=p;
         d2.a3.y=q;
-        d2.a1.x=zuobiao1.x;
-        d2.a1.y=zuobiao1.y;
-        d2.a2.x=zuobiao2.x;
-        d2.a2.y=zuobiao2.y;
+        d2.a1.x=zuobiao1.x-p;
+        d2.a1.y=zuobiao1.y-q;
+        d2.a2.x=zuobiao2.x-p;
+        d2.a2.y=zuobiao2.y-q;
         int b,c;
         for(b=0;b<d2.row;b++)
             for(c=0;c<d2.col;c++)
@@ -77,8 +77,8 @@ public class test {
             d2.col=k+a2+a4;//col
             d2.a3.x=p-a1;//��չ֮����Ԫ�صĺ����
             d2.a3.y=q-a2;//�����
-            d2.a1.x=zuobiao1.x;
-            d2.a1.y=zuobiao1.y;
+            d2.a1.x=zuobiao1.x-d2.a3.x;
+            d2.a1.y=zuobiao1.y-d2.a3.y;
             int b,c;
             for(b=0;b<d2.row;b++)
                 for(c=0;c<d2.col;c++)

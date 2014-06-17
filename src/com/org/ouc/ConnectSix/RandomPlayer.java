@@ -129,13 +129,14 @@ public class RandomPlayer extends ConnectSixPlayer {
 
         //ะกั๙
         Cut_chess cc=new Cut_chess(s);
-        int[][] newchess =cc.cut();
+
         Fpiece fp1=new Fpiece(oppoentLastMove.getStartPoint().getX(),oppoentLastMove.getStartPoint().getY(),getOpponentPieceID());
         Fpiece fp2=new Fpiece(oppoentLastMove.getEndPoint().getX(),oppoentLastMove.getEndPoint().getY(),getOpponentPieceID());
         Solution so=new Solution(fp1,fp2);
 
         so.fmain(fp1);
         so.fmain(fp2);
+        int[][] newchess =cc.cut();
         //if(so.keyflg==1)
 
         //ะกร๙
